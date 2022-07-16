@@ -22,16 +22,18 @@ function serialize(candles) {
 }
 
 async function getCandlesForStock(ctx) {
-  const { stock } = ctx.query;
-  if (!stock) {
+  const { stock: queryStock } = ctx.query;
+  if (!queryStock) {
     ctx.status = 400;
     ctx.body = 'Missing stock parameter';
     return;
   }
-  const candles = await getCandles(stock);
-  ctx.body = {
-    [stock]: serialize(candles)
-  };
+  const response = {};
+  await Promise.all(queryStock.map(async (stock) => {
+    const candles = await getCandles(stock);
+    response[stock] = serialize(candles);
+  }));
+  ctx.body = response;
 }
 
 

@@ -9,7 +9,7 @@ Application listnes to webcsoket at configures path. This websocket is expected 
 
 From these events the application generates cached stock candles for each time interval. Default configuration set up for 1 minute intervals.
 
-To verify the applications correctly listnes and caches data a simple HTTP GET endpoint will be set up that accepts stock symbol as query parameter and returns array of stock candles since the start of the service. No limits or filtering will be implemented for this endpoint.
+To verify the applications correctly listnes and caches data a simple HTTP GET endpoint will be set up that accepts stock symbol(s) as query parameter(s) and returns array of stock candles since the start of the service. No limits or filtering will be implemented for this endpoint.
 
 
 ## Running the service
@@ -48,9 +48,9 @@ The service exposes the following endpoints
 
 These can be queried as follows:
 
-### Get candles for single stock
+### Get candles for stock(s)
 ```
-curl http://localhost:8080/candles?stock=<symbol>
+curl http://localhost:8080/candles?stock=<symbol>[&stock=<symbol>]
 ```
 
 This should return JSON in the following format:
