@@ -1,7 +1,6 @@
 const { intervalMilliseconds } = require('../config');
 
-// Find UNIX timestamp of the current interval (in milliseconds)
-// from the given timestamp
+// Find UNIX timestamp of closest interval start point.
 function currentIntervalStart(timestamp) {
   const intervalHours = Math.floor(intervalMilliseconds / 3600000);
   const intervalMinutes = Math.floor(intervalMilliseconds / 60000);
@@ -21,8 +20,7 @@ function currentIntervalStart(timestamp) {
   return date.getTime();
 };
 
-// Find UNIX timestamp of the next minute (in milliseconds)
-// from the given timestamp
+// Find UNIX timestamp of the next interval from the given timestamp
 function nextIntervalStart(timestamp) {
   const date = currentIntervalStart(timestamp) + intervalMilliseconds;
   return date;

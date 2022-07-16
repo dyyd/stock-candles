@@ -10,7 +10,7 @@ class CandleStick {
   }
 }
 
-class SingletonCandleStore {
+class CandleStore {
   constructor() {
     this.candles = {};
   }
@@ -37,6 +37,6 @@ class SingletonCandleStore {
 }
 
 module.exports = {
-  CandleStore: new SingletonCandleStore(),
+  CandleStore: new CandleStore(),
   CandleStick
 };

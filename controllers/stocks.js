@@ -1,4 +1,4 @@
-const {getSymbols} = require('../services/candleService');
+const { getSymbols } = require('../services/candleService');
 
 async function getStockSymbols(ctx) {
   const symbols = await getSymbols();

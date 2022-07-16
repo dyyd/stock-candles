@@ -1,4 +1,4 @@
-Exercise for listening to websockets.
+Exercise for listening to websockets.  Extra comments in code due to testing out Github Copilot.
 
 ## Expected behavior
 
@@ -9,7 +9,7 @@ Application listnes to webcsoket at configures path. This websocket is expected 
 
 From these events the application generates cached stock candles for each time interval. Default configuration set up for 1 minute intervals.
 
-To verify the applications correctly listnes and caches data a simple HTTP GET endpoint will be set up that accepts stock symbol(s) as query parameter(s) and returns array of stock candles since the start of the service. No limits or filtering will be implemented for this endpoint.
+To verify the applications correctly listnes and caches data a simple HTTP GET endpoint will be set up that accepts stock symbol as query parameter and returns array of stock candles since the start of the service. No limits or filtering will be implemented for this endpoint.
 
 
 ## Running the service
@@ -22,6 +22,9 @@ Docker needs to be installed on the machine
 
 
 ### Build
+
+Before building it may be necessary to update configuration in `config.js` file for stock server host and for candle interval.
+
 
 To build the Docker image run the following command:
 ```
@@ -44,6 +47,8 @@ The service exposes the following endpoints
 * GET /stocks
 
 These can be queried as follows:
+
+### Get candles for single stock
 ```
 curl http://localhost:8080/candles?stock=<symbol>
 ```
@@ -64,6 +69,8 @@ This should return JSON in the following format:
 }
 ```
 
+
+### Get list of all cached stock symbols
 ```
 curl http://localhost:8080/stocks
 ```

@@ -36,7 +36,6 @@ async function createCandle(symbol, price, timestamp) {
 
 async function updateCandle(candle, price) {
   candle.close = price;
-  candle.volume += 1;
   if (price > candle.high) {
     candle.high = price;
   }
