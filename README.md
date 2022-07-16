@@ -39,9 +39,13 @@ After this the service is accessible from `localhost:8080`
 
 ## Retrieving data
 
-The service exposes a single endpoint that can be queried as follow:
+The service exposes the following endpoints
+* GET /candles?stock=<symbol>
+* GET /stocks
+
+These can be queried as follows:
 ```
-curl http://localhost:8080/candles?stock=APL
+curl http://localhost:8080/candles?stock=<symbol>
 ```
 
 This should return JSON in the following format:
@@ -57,5 +61,16 @@ This should return JSON in the following format:
             "closePrice": <number>
         }
     ]
+}
+```
+
+```
+curl http://localhost:8080/stocks
+```
+
+This should return JSON in the following format:
+```
+{
+    "symbols": [<string>,...,<string>]
 }
 ```
